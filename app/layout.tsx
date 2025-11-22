@@ -2,6 +2,7 @@ import './scss/style.scss'
 import localFont from 'next/font/local'
 import Header from './ui/header';
 import сart from './ui/cart';
+import CartProvider from './providers/CartProvider';
 
 const GTEestiProText = localFont({
   src: [
@@ -25,12 +26,14 @@ export default function RootLayout({ children, }: Readonly<{
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous"></link>
       </head>
-      <body  className={GTEestiProText.className}>
-        <Header />
-        <main>
-          {children}
-        </main>
-        <сart />
+      <body className={GTEestiProText.className}>
+        <CartProvider>
+          <Header />
+          <main>
+            {children}
+          </main>
+          <сart />
+        </CartProvider>
       </body>
     </html>
   );
